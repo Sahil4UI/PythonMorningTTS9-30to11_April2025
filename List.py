@@ -1,117 +1,70 @@
->>> x = [1,2,3,4,5,6]
->>> y = [3,3.43,True,"hey"]
+Python 3.13.3 (v3.13.3:6280bb54784, Apr  8 2025, 10:47:54) [Clang 15.0.0 (clang-1500.3.9.4)] on darwin
+Enter "help" below or click "Help" above for more information.
+
+>>> # list - copy
+>>> x = [1,2,3,4,5]
 >>> type(x)
 <class 'list'>
 
->>> x
-[1, 2, 3, 4, 5, 6]
-
->>> x[0]
-1
-
->>> x[-1]
-6
-
->>> x[0:5]
-[1, 2, 3, 4, 5]
-
->>> x[::-1]
-[6, 5, 4, 3, 2, 1]
-
->>> x = [1,2,3,[4,5,6,[7,8,9,10]]]
->>> x[3][3][-1]
-10
-
->>> x[-1][3][-1]
-10
-
->>> x = [1,2,3,4,5]
->>> x.append(90)
->>> x
-[1, 2, 3, 4, 5, 90]
-
->>> x.append(80)
->>> x
-[1, 2, 3, 4, 5, 90, 80]
-
->>> x.insert(0,100)
->>> x
-[100, 1, 2, 3, 4, 5, 90, 80]
-
->>> x.insert(3,-10)
->>> x
-[100, 1, 2, -10, 3, 4, 5, 90, 80]
-
->>> x[0] = 5
->>> x
-[5, 1, 2, -10, 3, 4, 5, 90, 80]
-
->>> x.pop()
-80
-
->>> x
-[5, 1, 2, -10, 3, 4, 5, 90]
-
->>> x.pop(0)
-5
-
->>> x
-[1, 2, -10, 3, 4, 5, 90]
-
->>> x.remove(90)
->>> x
-[1, 2, -10, 3, 4, 5]
+>>> y = x
+>>> # x ka address y me gaya
 
 >>> del x[0]
 >>> x
-[2, -10, 3, 4, 5]
+[2, 3, 4, 5]
 
->>> x.clear()
+>>> y
+[2, 3, 4, 5]
+
+>>> y = x.copy()
 >>> x
-[]
+[2, 3, 4, 5]
 
+>>> y
+[2, 3, 4, 5]
+
+>>> del x[0]
+>>> x
+[3, 4, 5]
+
+>>> y
+[2, 3, 4, 5]
+
+>>> # Tuple - tuple is immutable (which cannot be changed)
+>>> x = (1,2,3,4,5)
+
+>>> del x[0]
+Traceback (most recent call last):
+  File "<pyshell#16>", line 1, in <module>
+    del x[0]
+TypeError: 'tuple' object doesn't support item deletion
+
+>>> x
+(1, 2, 3, 4, 5)
+
+>>> len(x)
+5
+
+>>> x.count(4)
+1
+
+>>> x.count(0)
+0
+
+>>> x.index(5)
+4
+
+>>> # list comprehension
 >>> x = [i for i in range(1,11)]
 >>> x
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
->>> x = [1,2,3,4]
->>> y = [5,6,7,8]
->>> x + y
-[1, 2, 3, 4, 5, 6, 7, 8]
+>>> y = (i for i in range(1,11))
+>>> y
+<generator object <genexpr> at 0x101529f00>
 
->>> x
-[1, 2, 3, 4]
-
->>> x * 3
-[1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
-
->>> x.append(y)
->>> x
-[1, 2, 3, 4, [5, 6, 7, 8]]
-
->>> del x
->>> x
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'x' is not defined
-
->>> x = [1,2,3,4,5,6,7,8,9,10]
->>> for i in range(0,len(x)):
-...     print(x[i])
-...
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-
->>> for item in x:
-...     print(item)
+>>> for i in y:
+...     print(i)
 ...
 1
 2
